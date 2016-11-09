@@ -1,0 +1,48 @@
+% $Id: title-LHCb-ANA.tex 39841 2013-07-26 10:31:08Z roldeman $
+% ===============================================================================
+% Purpose: LHCb-ANA Note title page template
+% Author: 
+% Created on: 2010-10-05
+% ===============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  TITLE PAGE  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header ---------------------------------------------------
+\vspace*{-1.5cm}
+
+\noindent
+\begin{tabular*}{\linewidth}{lc@{\extracolsep{\fill}}r@{\extracolsep{0pt}}}
+\ifthenelse{\boolean{pdflatex}}% Logo format choice
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.14\textwidth]{figs/tuhep-logo.pdf}} & &}%
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.12\textwidth]{logo.png}} & &}
+
+ \\
+ & & 现代科学中的哲学问题 \\  % ID 
+ & & \today \\ % Date - Can also hardwire e.g.: 23 March 2010
+ & & version 0.1\\
+\hline
+\end{tabular*}
+
+\vspace*{1.5cm}
+
+% Title --------------------------------------------------
+{\bf\boldmath\huge
+\begin{center}
+    准粒子与基本粒子
+\end{center}
+}
+
+\vspace*{0.7cm}
+
+% Authors -------------------------------------------------
+\begin{center}
+赵明锐$^1$
+\bigskip\\
+{\it\footnotesize
+    $^1$ 清华大学高能物理中心\\清华大学工程物理系
+}
+\end{center}
+
+\vspace*{2.0cm}

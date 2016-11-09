@@ -1,0 +1,137 @@
+%\pdfoutput=1
+% Uncomment line above if submitting to arXiv and using pdflatex
+
+% $Id: main.tex 73669 2015-06-05 10:36:06Z lafferty $
+% ============================================================================
+% Purpose: Template for LHCb documents
+% Authors: Tomasz Skwarnicki, Roger Forty, Ulrik Egede
+% Created on: 2010-09-24
+% ============================================================================
+\documentclass{article}
+% For two column text, add "twocolumn" as an option to the document
+% class. Also uncomment the two "onecolumn" and "twocolumn" lines
+% around the title page below.
+
+% Chinese
+\usepackage{xeCJK}
+\usepackage{cite}
+\usepackage{mciteplus}
+\usepackage{lineno}
+\usepackage{xpinyin}
+
+\renewcommand{\baselinestretch}{1.6}
+%\usepackage{setspace}\linestretch{1.6}
+
+% Variables that controls behaviour
+\usepackage{ifthen} % for conditional statements
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true} % False for eps figures 
+
+\newboolean{articletitles}
+\setboolean{articletitles}{true} % False removes titles in references
+
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false} %True for upright particle symbols
+
+%\newboolean{inbibliography}
+%\setboolean{inbibliography}{false} %True once you enter the bibliography
+
+\input{preamble}
+\input{myfonts}
+\input{mydefine}
+\input{mathdefine}
+\usepackage{longtable} % only for template; not usually to be used in PAPERs
+
+
+\newtheorem{defi}{定义}[section]
+\newtheorem{exm}{例}[section]
+\newtheorem{rem}{注}[section]
+\newtheorem{prop}{命题}[section]
+%\newtheorem{exercises}{习题}[chapter]
+%\newtheorem{examples}{例}[chapter]
+%\newtheorem*{sltn}{解}
+
+
+%\lstset{language=C++}%这条命令可以让LaTeX排版时将C++键字突出显示
+%\lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+%\lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问>题
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Title     %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+
+% %%%%%%% CHOOSE TITLE PAGE--------
+\onecolumn
+%\input{title-LHCb-CONF}
+\input{title-Lecture-Note}
+%\twocolumn
+% %%%%%%%%%%%%% ---------
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  Table of Content   %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Uncomment next 2 lines if desired
+\renewcommand{\contentsname}{目录}
+%\tableofcontents
+%\cleardoublepage
+
+\renewcommand\figurename{图}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Main text %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{plain} % restore page numbers for the main text
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%% Uncomment during review phase. 
+%% Comment before a final submission.
+%\linenumbers
+
+% You can include short sections directly in the main tex file.
+% However, for larger papers it is desirable to split the text into
+% several semiautonomous files, which can be revised independently.
+% This is especially useful when developing a document in
+% collaboration with several people, since then different parts can be
+% edited independently.  This type of file organization is shown here.
+% 
+
+%\setcounter{chapter}{0} % manually set the chapter chapter counter.
+\input{all}
+%input{contents/01problem}
+%input{contents/02conj}
+%input{contents/03linear}
+%input{contents/04borel}
+%input{contents/05sym}
+%input{contents/06conclusion}
+
+%\renewcommand\refname{参考文献}
+%\addcontentsline{toc}{section}{Ref}
+%\setboolean{inbibliography}{true}
+%\bibliographystyle{LHCb}
+%\bibliography{main}
+
+
+%\newpage
+
+% Author List ----------------------------                                                                                                                                                                                                                                                                                                
+%  You need to get a new author list!                                                                                                                                                                                                                                                                                                    
+
+%\input{LHCb_HD_authorlist_2014-06-20}
+ 
+%\newpage
+%\input{LHCb_authorlist.tex}
+
+%In case line numbering doesn't work well after including the authorlist, try moving the \verb!\bigskip! after the last author to a separate line.
+
+
+%The authorship for Conference Reports should be ``The LHCb collaboration'', with a footnote giving the name(s) of the contact author(s), but without the full list of collaboration names.
+
+\end{document}

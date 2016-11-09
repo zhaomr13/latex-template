@@ -1,0 +1,146 @@
+\newcommand{\HamiltonionOperator}{\ensuremath{\hat{H}}}
+\newcommand{\sutwo}{\ensuremath{SU(2)}}
+\newcommand{\sothree}{\ensuremath{SO(3)}}
+\newcommand{\mpr}{\ensuremath{{m^{\prime}}}}
+\newcommand{\vpp}{\ensuremath{\vert\uparrow\rangle}}
+\newcommand{\vmm}{\ensuremath{\vert\downarrow\rangle}}
+
+%\chapter{第一章}
+
+\section*{参考材料}
+主要参考材料是喀兴林的《高等量子力学》，其他材料还有曾谨言《量子力学（卷2）》，高崇寿《群论及其在粒子物理中的应用》，熊玉庆、何宝鹏《群论与高等量子力学导论》，马中骐、戴安英《群论及其在物理中的应用》，朱洪源《群论和量子力学中的对称性》。
+
+\section{量子力学和对称性理论简介}
+在比较现代的观点中，量子力学的理论是用希尔伯特空间的语言来描述的。
+希尔伯特空间是一个完备的酉空间，例如，平方可积函数在几乎处处的意义下，形成一个希尔伯特空间。
+%有的时候，量子力学里不太关心完备性。（但是完备性是一个严肃而值得尊重的问题。）
+
+量子力学中的粒子（态），使用希尔伯特空间中的一个矢量来描述。物理量（如能量，角动量）使用作用于希尔伯特空间中矢量的算符来描述。
+量子力学中的一些基本结构性问题是特征值问题，即讨论我们要研究的系统是由哪些特征向量（意味着含有特定性质）张成的。
+
+Noether证明了具有重要意义的Noether定理，在20世纪以来的物理学中，对对称性及其破坏的考虑极大地推动了现代物理学的发展。
+而群论最早也是在研究多项式的对称变换中发展起来的，后来物理学家将群论引入到量子力学中研究体系的对称性和守恒量。
+
+对群的研究，也就是对称性的研究。很多情况下要通过群在线性空间上的作用。要研究量子力学中的群作用，有一个天然的表示空间，即描述量子力学态的希尔伯特空间。
+
+%\subsection{对称性群}
+%设系统的哈密顿量为\HamiltonionOperator 所有使\HamiltonionOperator 不变的空间变换构成一个群$\lbrace Q \rbrace$，这个群称为这个系统的对称变换群，或者称为对称性群。这个群使薛定谔方程的形式不变。
+
+%经过大量的研究，人们相信一个未被严格证明的结论：
+%系统的哈密顿量属于任意一个特征值的特征子空间，都对应着其对称性群的一个不可约表示。
+
+%设\HamiltonionOperator 的本征值以及本征函数已知，本征值为$E_n$，对应的本征函数为$\psi_{ni}(r)$.函数{\psi_i}张成%\HamiltonionOperator 的一个特征子空间，维数为d。
+
+%则$ $为对称性群的一个表示的一个基函数。即说明哈密顿算符的每一个本征子空间都是其对称性群的一个本征子空间。
+%本征子空间中任意d个互相正交的本征函数都可以对称性群的一个d维表示。
+
+\section{转动与角动量理论}
+空间转动是量子力学中一种比较复杂和重要的对称性。
+
+先介绍空间转动群及其表示：
+\subsection{\sutwo 群的不可约表示}
+\sutwo 群是所有行列式为1的复矩阵组成的群。
+一个\sutwo 群可以表示成一般形式：
+\begin{displaymath}
+u(\xi\zeta\eta) = \begin{bmatrix}
+e^{i\xi}\cos \eta & -e^{-i\zeta} \sin \eta \\ 
+e^{i\zeta} \sin \eta & e^{i\xi} \cos \eta
+\end{bmatrix} 
+\end{displaymath}
+或者表示为
+\begin{displaymath}
+u(ab) = \begin{bmatrix}
+a & b \\ 
+-b^* & a^* 
+\end{bmatrix} 
+\end{displaymath}
+其中$a a^* + b b^* = 1$。
+
+
+先求\sutwo 群的表示。
+取$V^{(j)}$作为以$\xi$，$\eta$为自变量的$2j$次齐次多项式形成的线性空间，它是$2j+1$维的，$j$可取为半整数和整数。
+设$v = (\xi, \eta)^T$，可以将$V^{(j)}$中的元素写作$f(v)$，定义$u f(v) = f(u^{-1}v)$，其中$g$为\sutwo 群中的元素。则容易验证，这是群表示。
+如果取为一组基$f^j_m(v) = - \frac{\xi^{j-m}\eta^{j+m}}{\sqrt{(j-m)!(j+m)!}}$，其中$m$的取值范围是$-j,-j+1,...,j-1,j$。
+则$u f_m^j(\xi, \eta) = \sum_{\mpr = -j}^{+j} f_\mpr^j(\xi, \eta)D_{\mpr m}^j(u)$
+则可以求出
+\begin{displaymath}
+\begin{split}
+D^j_{\mpr m}(a, b) &= \sum_n (-1)^n \frac{\sqrt{(j-m)!(j+m)!(j-\mpr)!(j+\mpr)!}}
+{(j+\mpr-n)!(j-m-n)!n!(n+m-\mpr)!} \\
+&\times a^{j+\mpr-n} \times (a^*)^{j-m-n}b^n(b^*)^{n+m-\mpr}
+\end{split}
+\end{displaymath}
+为\sutwo 群表示的具体矩阵形式。
+
+下面证明这个表示是不可约的：
+假设存在$M$，$MD = DM$，首先取$a= e^{i\alpha/2}$, $b=0$则D成为对角阵。可以推出$M$为对角矩阵。
+再取任意$D$，使得$b$不为$0$，容易推出，$M$为纯量矩阵。则由schur引理，可知这些表示为不可约表示。
+
+\subsection{\sothree 群的结构}
+（我在这个部分的说法与一般的文献有所差别，一般的文献会称这些内容为\sothree 群的不可约表示，而这实际上是有问题的。\sothree 映射成的偶数维矩阵不能构成群。这实际上建立的是\sothree 和 \sutwo 的局域同构。）
+\sothree 群是三维空间转动构成的群。
+求\sothree 群的表示的常规做法是将\sothree 群和\sutwo 群相联系。
+首先考虑如何用二维矩阵来表示空间中的点：
+取
+\begin{displaymath}
+h=\begin{bmatrix}
+z & x - i y \\ 
+x + i y & -z
+\end{bmatrix} 
+\end{displaymath}
+取\sutwo 中的元素$u$，由于$det(uhu^{-1}) = det(h)$。因此$x^{\prime2}+y^{\prime2}+z^{\prime2} = x^2 + y^2 + z^2$。
+这样$u$的作用是将空间中的一个点对应成空间中的另一个点，对应着\sothree 中的一个元素$q$。因此，这建立了\sutwo 与 \sothree 群的一个映射。显然这个映射为群同态。
+可以证明，这个映射为满射，且为$2$对$1$的，$u$与$-u$对应同一个$q$。
+%明确地写出u(\alpha\beta\gamma) = \begin{displaymath}
+%u(\xi\zeta\eta) = \begin{vmatrix}
+%e^{i\xi}\cos \eta & -e^{-i\zeta} \sin \eta \\ 
+%e^{i\zeta} \sin \eta & e^{i\xi} \cos \eta
+%\end{vmatrix} 
+%\end{displaymath}
+
+\sutwo 与\sothree 的对应关系为$a=e^{-i\frac{\alpha+\gamma}{2}}\cos \frac{\beta}{2}$，
+$b=e^{-i\frac{\alpha-\gamma}{2}}\sin \frac{\beta}{2}$。其中$\alpha$，$\beta$，$\gamma$为欧拉角（描述转动的一组参数）
+因此用欧拉角来表示这个转动，可以将矩阵元写成
+\begin{displaymath}
+\begin{split}
+D^j_{\mpr m}(\alpha\beta\gamma) &= \sum_n (-1)^n \frac{\sqrt{(j-m)!(j+m)!(j-\mpr)!(j+\mpr)!}}
+{(j+\mpr-n)!(j-m-n)!n!(n+m-\mpr)!} \\
+&\times e^{-i\mpr\alpha} (\cos \frac{\beta}{2})^{2j+\mpr-m-2 n}(\sin \frac \beta 2)^{2n + m - \mpr} e^{-im \gamma}
+\end{split}
+\end{displaymath} 。当$j$为整数时，$u$与$-u$有相同的表示。而当$j$为半整数时，$u$与$-u$的表示不同。
+实际上，这仍然是\sutwo 的表示，只是与空间转动进行了联系。
+（因此，按一般文献的说法，\sothree 的偶数维表示有两个表示空间。但一个更恰当的说法是，我们生活的三维空间世界上是一个平移和\sutwo 旋转群生成的流形。所谓的三维空间只是这个流形的一个局域同构。）
+
+求特征标：
+由于特征标为类函数，每个转动$\phi$角形成一个共轭类，可以取特殊方向：
+\begin{displaymath}
+\chi^j(\phi) = tr(\phi, 0, 0) = \frac{\sin( j+\frac 1 2 )\phi }{\frac 1 2 \phi} 
+\end{displaymath}
+
+\section{量子力学中的角动量与角动量合成}
+
+由于定义的复杂性，这里只给出角动量定义的结论。空间转动可以看作无穷小转动的复合，一个空间转动可以写成指数形式，如$e^{-i/\hbar \phi \hat{L}}$。这个指数项上的$\hat L$成为一个李代数的生成元，就是角动量算符。我们在下面需要用到的结论是，空间转动算符的特征向量与角动量算符的特征向量相同，一个态的在某个方向的空间转动下是不变的，对应它是这个方向的角动量算子的特征向量。
+
+如在第一部分所述，我们现在的一个问题是，我们的系统是由哪些具有特定角动量的特征向量张成。
+子系统的角动量和整体的角动量有什么关系。
+
+\subsection{角动量合成的例子}
+例如，一个原子核与一个电子都有$1/2$的自旋角动量，不考虑相互作用和轨道角动量，那么合成的量子态，应该有什么样的角动量形式呢？
+首先直接在物理直观上看这一点。用记号\vpp 和\vmm 表示自旋向上和自旋向下的态，则它们张成一个二维的线性空间。
+那么总体的系统就可以看做将两个表示空间做直积，可以取一组基为$v_1 = \vpp\otimes\vpp$，$v_2 = \vmm\otimes\vmm$，$v_3 = \frac{1}{\sqrt{2}} (\vpp\otimes\vmm + \vmm \otimes \vpp)$，$v_4 = \frac{1}{\sqrt{2}} (\vpp\otimes\vmm - \vmm \otimes \vpp)$。
+这表示的是，从整个原子的角度看，它可能有总自旋为$0$的态（$v_4$），和总自旋为$1$的态。
+整个希尔伯特空间写成了这两个空间的直和。
+
+\subsection{角动量的合成}
+有了上面的例子后，我们来对更一般的情况进行讨论。
+
+计算特征标：
+\[
+\frac{\sin j_1 + \frac 1 2 \phi}{\sin \frac 1 2 \phi} \times
+\frac{\sin j_2 + \frac 1 2 \phi}{\sin \frac 1 2 \phi}
+=
+\sum_{j=j_1-j_2}^{j_1+j_2} \frac{\sin (j+\frac 1 2)\phi }{\sin \frac 1 2 \phi} 
+\]
+
+这就说明，在更一般的意义下，两个角动量为$j_1$和$j_2$的量子态，可以合成角动量为$j_1 - j_2$到$j_1+j_2$的量子态。（实际上就是三角形不等式）
+
