@@ -10,19 +10,24 @@
 MAIN = main
 
 # name of the target - change that to something descriptive, like paper-v0, Bs2PhiPhi-ANA-v1, etc...
-TARGET = Electrodynamics
+TARGET = QFT
 
 # name of command to perform Latex (either pdflatex or latex)
 LATEX = xelatex
+NOBIB = True
 
-ifeq ($(LATEX),latex)
+ifeq ($(LATEX),xelatex)
 	FIGEXT = .pdf
 	MAINEXT= .pdf
 	BUILDCOMMAND=rm -f $(MAIN).aux && $(LATEX) $(MAIN) && $(LATEX) $(MAIN)
 else
 	FIGEXT = .eps
 	MAINEXT= .pdf
+	ifeq ($(NOBIB), True)
+	BUILDCOMMAND=rm -f $(MAIN).aux && $(LATEX) $(MAIN) && $(LATEX) $(MAIN) && $(LATEX) $(MAIN) && dvips -z -o $(MAIN).ps $(MAIN) && ps2pdf $(MAIN).ps && rm -f head.tmp body.tmp
+else
 	BUILDCOMMAND=rm -f $(MAIN).aux && $(LATEX) $(MAIN) && bibtex $(MAIN) && $(LATEX) $(MAIN) && $(LATEX) $(MAIN) && dvips -z -o $(MAIN).ps $(MAIN) && ps2pdf $(MAIN).ps && rm -f head.tmp body.tmp
+endif
 endif
 
 # list of all source files
