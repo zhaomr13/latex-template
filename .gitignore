@@ -1,0 +1,17 @@
+*~
+*.pdf
+*.pyc
+*.aux
+*.log
+*.bbl
+*.blg
+*.dvi
+*.tmp
+*.out
+*.bbl
+!*.py
+!*.C
+!*.cpp
+!*.txt
+!*.md
+!*.tex
